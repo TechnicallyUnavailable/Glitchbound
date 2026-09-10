@@ -83,15 +83,14 @@ public final class MeasurementOverlayView extends View {
             canvas.drawText(String.valueOf(point.index + 1), point.x, point.y + dp(4f), pointTextPaint);
         }
 
-        // Center aiming reticle.
         float cx = getWidth() * 0.5f;
         float cy = getHeight() * 0.5f;
         float r = dp(15f);
         canvas.drawCircle(cx, cy, r, reticlePaint);
         canvas.drawLine(cx - r - dp(8f), cy, cx - r + dp(2f), cy, reticlePaint);
         canvas.drawLine(cx + r - dp(2f), cy, cx + r + dp(8f), cy, reticlePaint);
-        canvas.drawLine(cx, cy - r - dp(8f), cx, cy - r + dp(2f), cy, reticlePaint);
-        canvas.drawLine(cx, cy + r - dp(2f), cx, cy + r + dp(8f), cy, reticlePaint);
+        canvas.drawLine(cx, cy - r - dp(8f), cx, cy - r + dp(2f), reticlePaint);
+        canvas.drawLine(cx, cy + r - dp(2f), cx, cy + r + dp(8f), reticlePaint);
     }
 
     private float dp(float value) {
