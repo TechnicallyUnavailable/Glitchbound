@@ -145,7 +145,8 @@ public final class MeasureRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onSurfaceCreated(javax.microedition.khronos.egl.EGLConfig config) {
+    public void onSurfaceCreated(javax.microedition.khronos.opengles.GL10 gl,
+                                 javax.microedition.khronos.egl.EGLConfig config) {
         GLES20.glClearColor(0f, 0f, 0f, 1f);
         background.createOnGlThread();
     }
@@ -246,7 +247,7 @@ public final class MeasureRenderer implements GLSurfaceView.Renderer {
 
     private void maybePublishSnapshot(Camera camera, TrackingState trackingState, String lockText) {
         long now = System.nanoTime();
-        if (now - lastUiUpdateNs < 80_000_000L) return; // ~12.5 Hz UI updates
+        if (now - lastUiUpdateNs < 80_000_000L) return;
         lastUiUpdateNs = now;
 
         float[] projection = new float[16];
